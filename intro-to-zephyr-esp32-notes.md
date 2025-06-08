@@ -25,6 +25,7 @@
 * Change to project dir /workspace/apps/01_blink
 * Set CONFIG_ESP32_USE_UNSUPPORTED_REVISION=y in prj.conf (Feather ESP32 uses an old V1.0 Core)
 * Feather ESP32: west build -p always -b esp32_devkitc_wroom/esp32/procpu -- -DDTC_OVERLAY_FILE=boards/esp32_devkitc_wroom.overlay
+* west build -p always -b esp32c3_devkitc -- -DDTC_OVERLAY_FILE=boards/esp32c3_devkitc.overlay
 
 ### Flash code
 * Check python version: python --version
@@ -33,7 +34,7 @@
 * Install pyserial & esptool: python -m pip install pyserial==3.5 esptool==4.8.1
 * flash code to 0x1000: python -m esptool --port /dev/tty.usbserial-01D0FD1C --chip auto --baud 921600 --before default_reset --after hard_reset write_flash -u --flash_size detect 0x1000 ./workspace/apps/01_blink/build/zephyr/zephyr.bin
 * 
-* 
+* python -m esptool --port /dev/tty.usbserial-14230 --chip auto --baud 921600 --before default_reset --after hard_reset write_flash -u --flash_size detect 0x0 ./workspace/apps/01_blink/build/zephyr/zephyr.bin
 
 
 
