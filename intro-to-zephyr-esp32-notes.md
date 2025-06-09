@@ -31,6 +31,8 @@
 * Check python version: python --version
 * Setup virtual env: python -m venv venv
 * Activate venv (on linux/max): source venv/bin/activate
+
+
 * Install pyserial & esptool: python -m pip install pyserial==3.5 esptool==4.8.1
 * flash code to 0x1000: python -m esptool --port /dev/tty.usbserial-01D0FD1C --chip auto --baud 921600 --before default_reset --after hard_reset write_flash -u --flash_size detect 0x1000 ./workspace/apps/01_blink/build/zephyr/zephyr.bin
 * 
@@ -66,3 +68,12 @@ openocd -f board/esp32c6-builtin.cfg
 #### Run GDB (in devcontainer)
 * /opt/toolchains/zephyr-sdk-0.16.8/riscv64-zephyr-elf/bin/riscv64-zephyr-elf-gdb build/zephyr/zephyr.elf
 * target extended-remote host.docker.internal:3333 
+
+## Todo
+* USBIP auf osx / win 11 aufsetzen
+* docker image erweitern
+	* usbip
+	* gdb
+	* OpenOCD
+	* webserver entfernen? switch?	
+* compiler für debug optimieren
