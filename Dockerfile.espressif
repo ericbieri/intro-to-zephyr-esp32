@@ -71,7 +71,6 @@ RUN apt-get -y update && \
         python3-pip \
         python3-venv \
         xz-utils \
-        dos2unix \
         vim \
         nano \
         mc \
