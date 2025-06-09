@@ -36,6 +36,14 @@
 * 
 * python -m esptool --port /dev/tty.usbserial-14230 --chip auto --baud 921600 --before default_reset --after hard_reset write_flash -u --flash_size detect 0x0 ./workspace/apps/01_blink/build/zephyr/zephyr.bin
 
-
-
-
+## 7. Debugging with OpenOCD and GDB
+### OpenOCD
+* Links
+  * [https://openocd.org/](https://openocd.org/)
+  * [OpenOCD - Doc](https://openocd.org/doc-release/html/index.html)
+  * [OpenOCD - Github](https://github.com/openocd-org/openocd)
+  * [OpenOCD - Espressif - Github](https://github.com/espressif/openocd-esp32)
+  
+* Install
+  * brew install open-ocd
+  * 
