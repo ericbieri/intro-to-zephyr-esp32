@@ -34,17 +34,18 @@
 * Install pyserial & esptool: python -m pip install pyserial==3.5 esptool==4.8.1
 * flash code to 0x1000: python -m esptool --port /dev/tty.usbserial-01D0FD1C --chip auto --baud 921600 --before default_reset --after hard_reset write_flash -u --flash_size detect 0x1000 ./workspace/apps/01_blink/build/zephyr/zephyr.bin
 * 
-* python -m esptool --port /dev/tty.usbserial-14230 --chip auto --baud 921600 --before default_reset --after hard_reset write_flash -u --flash_size detect 0x0 ./workspace/apps/01_blink/build/zephyr/zephyr.bin
+* ESP32-C6: python -m esptool --port /dev/tty.usbserial-1410 --chip auto --baud 921600 --before default_reset --after hard_reset write_flash -u --flash_size detect 0x0 ./workspace/apps/01_blink/build/zephyr/zephyr.bin
+
 
 ## 7. Debugging with OpenOCD and GDB
 ### OpenOCD
-Links
+#### Links
 * [https://openocd.org/](https://openocd.org/)
 * [OpenOCD - Doc](https://openocd.org/doc-release/html/index.html)
 * [OpenOCD - Github](https://github.com/openocd-org/openocd)
 * [OpenOCD - Espressif - Github](https://github.com/espressif/openocd-esp32)
   
-Install
+#### Install
 * Download latest [openocd-esp32](https://github.com/espressif/openocd-esp32/releases)
 * unzip: tar -xzf openocd-esp32-*.tar.gz
 * move to /Applications/openocd-esp32
@@ -53,5 +54,15 @@ Install
   * export OPENOCD_SCRIPTS=/path/to/openocd-esp32/share/openocd/scripts
 openocd -f board/esp32c6-builtin.cfg
 
-Run
-* openocd -f board/esp32c6-builtin.cfg 
+#### Run (on host)
+* openocd -s share/openocd/scripts/ -c 'set ESP_RTOS none; set ESP_FLASH_SIZE 0' -f board/esp32c6-builtin.cfg
+* See also [openocd-esp32 on esp32-c6 (OCD-1053)](https://github.com/espressif/openocd-esp32/issues/350#issuecomment-2571331057)
+* [OpenOCD config files](https://github.com/espressif/openocd-esp32/tree/master/tcl/board)
+
+### GDB 
+#### Links
+* [GNU Project Debugger](https://sourceware.org/gdb/)
+* [Quick Guide to GDB](https://beej.us/guide/bggdb/)
+#### Run GDB (in devcontainer)
+* /opt/toolchains/zephyr-sdk-0.16.8/riscv64-zephyr-elf/bin/riscv64-zephyr-elf-gdb build/zephyr/zephyr.elf
+* target extended-remote host.docker.internal:3333 
