@@ -38,12 +38,20 @@
 
 ## 7. Debugging with OpenOCD and GDB
 ### OpenOCD
-* Links
-  * [https://openocd.org/](https://openocd.org/)
-  * [OpenOCD - Doc](https://openocd.org/doc-release/html/index.html)
-  * [OpenOCD - Github](https://github.com/openocd-org/openocd)
-  * [OpenOCD - Espressif - Github](https://github.com/espressif/openocd-esp32)
+Links
+* [https://openocd.org/](https://openocd.org/)
+* [OpenOCD - Doc](https://openocd.org/doc-release/html/index.html)
+* [OpenOCD - Github](https://github.com/openocd-org/openocd)
+* [OpenOCD - Espressif - Github](https://github.com/espressif/openocd-esp32)
   
-* Install
-  * brew install open-ocd
-  * 
+Install
+* Download latest [openocd-esp32](https://github.com/espressif/openocd-esp32/releases)
+* unzip: tar -xzf openocd-esp32-*.tar.gz
+* move to /Applications/openocd-esp32
+* Add path to ~/.zshrc
+  * export PATH=/Applications/openocd-esp32/bin:$PATH
+  * export OPENOCD_SCRIPTS=/path/to/openocd-esp32/share/openocd/scripts
+openocd -f board/esp32c6-builtin.cfg
+
+Run
+* openocd -f board/esp32c6-builtin.cfg 
